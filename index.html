@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHUK STORES — Fashion Without Limits | Kampala</title>
+<meta name="description" content="CHUK STORES — women's & men's clothing in every colour, every size, every age. Ntinda Shopping Centre, Kampala. Retail & wholesale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#2B1140;
+    --plum-deep:#1C0B2C;
+    --marigold:#F5A623;
+    --magenta:#D6336C;
+    --emerald:#1B8A5A;
+    --sky:#2F6FB0;
+    --paper:#FFFFFF;
+    --ink:#1A1416;
+    --ink-soft:#5B4F5E;
+    --line: rgba(26,20,22,0.12);
+
+    --font-display: "Fraunces", serif;
+    --font-body: "Manrope", sans-serif;
+    --font-tag: "Space Mono", monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style:none; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- eyebrow / tag style, referencing garment size-tags ---------- */
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-tag);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border:1px solid currentColor;
+    border-radius:2px;
+    position:relative;
+  }
+  .tag::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:currentColor;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family: var(--font-display);
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:0.01em;
+  }
+  .logo span{ color:var(--magenta); }
+  .nav-links{
+    display:flex; gap:32px;
+    font-size:14px; font-weight:600;
+  }
+  .nav-links a{
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0; height:2px; background:var(--magenta);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:var(--ink);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:2px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.03em;
+  }
+  .nav-cta:hover{ background:var(--emerald); }
+  .burger{ display:none; font-size:26px; background:none; border:none; cursor:pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--plum);
+    color:#fff;
+    overflow:hidden;
+    padding:90px 0 0;
+  }
+  .hero-blocks{
+    position:absolute; inset:0;
+    z-index:0;
+    opacity:0.95;
+  }
+  .hero-blocks span{
+    position:absolute;
+    border-radius:4px;
+  }
+  .b1{ width:340px; height:340px; background:var(--magenta); top:-90px; right:-80px; transform:rotate(18deg); }
+  .b2{ width:200px; height:200px; background:var(--marigold); bottom:-60px; right:220px; transform:rotate(-12deg); }
+  .b3{ width:140px; height:420px; background:var(--emerald); bottom:-120px; right:-30px; transform:rotate(8deg); opacity:0.85; }
+  .b4{ width:90px; height:90px; background:var(--sky); top:120px; right:340px; border-radius:50%; }
+
+  .hero-inner{
+    position:relative; z-index:1;
+    padding-bottom:70px;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:40px;
+    align-items:end;
+  }
+  .eyebrow-row{
+    display:flex; gap:12px; margin-bottom:26px; flex-wrap:wrap;
+  }
+  .eyebrow-row .tag{ color: var(--marigold); }
+  h1.headline{
+    font-family: var(--font-display);
+    font-weight:700;
+    font-size:clamp(42px, 6.4vw, 88px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+  }
+  h1.headline em{
+    font-style:normal;
+    color:var(--marigold);
+  }
+  .hero-sub{
+    font-size:17px;
+    line-height:1.6;
+    color: rgba(255,255,255,0.82);
+    max-width:34ch;
+    margin-top:22px;
+  }
+  .hero-actions{
+    display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 24px;
+    font-weight:700;
+    font-size:14.5px;
+    border-radius:2px;
+    letter-spacing:0.01em;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .btn-primary{ background:var(--marigold); color:var(--plum-deep); }
+  .btn-primary:hover{ transform:translateY(-2px); background:#ffb845; }
+  .btn-ghost{ border:1.5px solid rgba(255,255,255,0.55); color:#fff; }
+  .btn-ghost:hover{ border-color:#fff; transform:translateY(-2px); }
+
+  .hero-stats{
+    display:flex; flex-direction:column; gap:18px;
+    border-left:2px solid rgba(255,255,255,0.25);
+    padding-left:26px;
+  }
+  .stat-num{
+    font-family:var(--font-display);
+    font-size:40px; font-weight:700; color:var(--marigold);
+    line-height:1;
+  }
+  .stat-label{
+    font-family:var(--font-tag);
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.7);
+    margin-top:6px;
+  }
+
+  /* ---------- size-tag ribbon (signature element) ---------- */
+  .ribbon{
+    background:var(--ink);
+    color:#fff;
+    overflow:hidden;
+    padding:16px 0;
+    position:relative;
+  }
+  .ribbon-track{
+    display:flex;
+    gap:48px;
+    white-space:nowrap;
+    animation: scroll 26s linear infinite;
+    font-family:var(--font-tag);
+    font-size:14px;
+    letter-spacing:0.08em;
+  }
+  .ribbon-track span{ opacity:0.9; }
+  .ribbon-track .dot{ color:var(--marigold); }
+  @keyframes scroll{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ribbon-track{ animation:none; }
+  }
+
+  /* ---------- Section shared ---------- */
+  section{ padding:96px 0; }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:52px; flex-wrap:wrap;
+  }
+  .section-tag{
+    font-family:var(--font-tag);
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--magenta); margin-bottom:14px; display:block;
+  }
+  h2.section-title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(30px, 3.6vw, 46px);
+    line-height:1.06;
+    max-width:16ch;
+  }
+  .section-desc{
+    max-width:36ch;
+    color:var(--ink-soft);
+    font-size:15.5px;
+    line-height:1.6;
+  }
+
+  /* ---------- Categories ---------- */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .cat-card{
+    background:#fff;
+    padding:38px 26px;
+    min-height:220px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:background .25s ease, color .25s ease;
+    position:relative;
+  }
+  .cat-card:hover{ color:#fff; }
+  .cat-card:nth-child(1):hover{ background:var(--magenta); }
+  .cat-card:nth-child(2):hover{ background:var(--emerald); }
+  .cat-card:nth-child(3):hover{ background:var(--sky); }
+  .cat-card:nth-child(4):hover{ background:var(--marigold); }
+  .cat-num{ font-family:var(--font-tag); font-size:12px; opacity:0.55; }
+  .cat-name{ font-family:var(--font-display); font-size:24px; font-weight:600; margin-top:auto; }
+  .cat-sub{ font-size:13px; margin-top:6px; opacity:0.75; }
+
+  @media (max-width: 900px){
+    .cat-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ---------- Fit-for-everybody band ---------- */
+  .fit-band{
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .fit-inner{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .size-scale{
+    display:flex;
+    border:1px solid var(--ink);
+    border-radius:2px;
+    overflow:hidden;
+    font-family:var(--font-tag);
+    font-size:12px;
+  }
+  .size-scale div{
+    flex:1;
+    text-align:center;
+    padding:16px 4px;
+    border-right:1px solid var(--ink);
+  }
+  .size-scale div:last-child{ border-right:none; }
+  .size-scale div:nth-child(odd){ background:#faf9f7; }
+  .size-caption{
+    margin-top:14px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .fit-copy p{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+  .fit-copy strong{ color:var(--ink); }
+
+  @media (max-width: 800px){
+    .fit-inner{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Social proof ---------- */
+  .social-section{ background:var(--plum-deep); color:#fff; }
+  .social-section .section-tag{ color:var(--marigold); }
+  .social-section .section-desc{ color:rgba(255,255,255,0.65); }
+  .social-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.12);
+  }
+  .social-card{
+    background:var(--plum-deep);
+    padding:40px 30px;
+    transition:background .25s ease;
+  }
+  .social-card:hover{ background:rgba(255,255,255,0.06); }
+  .social-icon{
+    width:44px; height:44px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700;
+    margin-bottom:22px;
+    font-family:var(--font-display);
+    color:#fff;
+  }
+  .social-icon svg{
+    width:22px; height:22px; display:block;
+    fill:currentColor;
+    stroke:currentColor;
+  }
+  .ig .social-icon{ background:linear-gradient(135deg,var(--magenta),#ff6f91); }
+  .fb .social-icon{ background:var(--sky); }
+  .tt .social-icon{ background:var(--marigold); color:var(--plum-deep); }
+  .social-name{ font-family:var(--font-display); font-size:20px; font-weight:600; margin-bottom:6px; }
+  .social-handle{ font-family:var(--font-tag); font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:18px; }
+  .social-follow{ font-size:13.5px; font-weight:700; display:inline-flex; align-items:center; gap:8px; }
+  .social-follow::after{ content:"→"; transition:transform .2s ease; }
+  .social-card:hover .social-follow::after{ transform:translateX(4px); }
+
+  @media (max-width:800px){
+    .social-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Location ---------- */
+  .location-inner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .location-info{
+    background:#fff;
+    padding:48px;
+  }
+  .loc-line{
+    display:flex; gap:14px; margin-bottom:22px;
+    font-size:15px; line-height:1.6;
+  }
+  .loc-icon{
+    font-family:var(--font-tag);
+    font-size:12px;
+    width:26px; height:26px; flex:none;
+    border:1px solid var(--ink);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .map-frame{ background:#eee; min-height:340px; }
+  .map-frame iframe{ width:100%; height:100%; min-height:340px; border:0; display:block; }
+
+  @media (max-width:800px){
+    .location-inner{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Contact / WhatsApp ---------- */
+  .contact-section{
+    background:var(--marigold);
+    color:var(--plum-deep);
+  }
+  .contact-inner{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .contact-title{
+    font-family:var(--font-display);
+    font-size:clamp(30px,4vw,50px);
+    font-weight:700;
+    line-height:1.05;
+  }
+  .wa-list{
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .wa-btn{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--plum-deep);
+    color:#fff;
+    padding:20px 26px;
+    border-radius:2px;
+    font-weight:700;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .wa-btn:hover{ transform:translateX(4px); background:var(--emerald); }
+  .wa-btn small{
+    display:block;
+    font-family:var(--font-tag);
+    font-weight:400;
+    font-size:12px;
+    color:rgba(255,255,255,0.6);
+    margin-top:4px;
+  }
+
+  @media (max-width:800px){
+    .contact-inner{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(255,255,255,0.6);
+    padding:44px 0;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-size:13px;
+  }
+  .footer-inner .logo{ color:#fff; }
+
+  /* ---------- Mobile nav ---------- */
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; top:76px; left:0; right:0;
+      background:#fff;
+      flex-direction:column;
+      padding:24px 28px;
+      gap:20px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-130%);
+      transition:transform .3s ease;
+    }
+    .nav-links.open{ transform:translateY(0); }
+    .burger{ display:block; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-stats{ border-left:none; border-top:2px solid rgba(255,255,255,0.25); padding-left:0; padding-top:20px; flex-direction:row; flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">CHUK<span>.</span>STORES</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#fit">Sizes For All</a></li>
+      <li><a href="#follow">Follow</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact" class="nav-cta">WhatsApp Us</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-blocks">
+    <span class="b1"></span>
+    <span class="b2"></span>
+    <span class="b3"></span>
+    <span class="b4"></span>
+  </div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow-row">
+        <span class="tag">Ntinda, Kampala</span>
+        <span class="tag">Retail &amp; Wholesale</span>
+      </div>
+      <h1 class="headline">Fashion<br>with <em>zero</em><br>limits.</h1>
+      <p class="hero-sub">CHUK STORES dresses everybody — women and men, every colour, every size, every age. No one gets left off the rack.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/256784900500" target="_blank" rel="noopener">Order on WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/chukstore/" target="_blank" rel="noopener">See the collection →</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">100K+</div>
+        <div class="stat-label">Followers on Instagram</div>
+      </div>
+      <div>
+        <div class="stat-num">1M+</div>
+        <div class="stat-label">Likes &amp; counting</div>
+      </div>
+      <div>
+        <div class="stat-num">XS—5XL</div>
+        <div class="stat-label">Every size, always in stock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span>ALL COLOURS <span class="dot">●</span></span>
+    <span>ALL SIZES <span class="dot">●</span></span>
+    <span>ALL AGES <span class="dot">●</span></span>
+    <span>WOMEN'S WEAR <span class="dot">●</span></span>
+    <span>MEN'S WEAR <span class="dot">●</span></span>
+    <span>RETAIL &amp; WHOLESALE <span class="dot">●</span></span>
+    <span>ALL COLOURS <span class="dot">●</span></span>
+    <span>ALL SIZES <span class="dot">●</span></span>
+    <span>ALL AGES <span class="dot">●</span></span>
+    <span>WOMEN'S WEAR <span class="dot">●</span></span>
+    <span>MEN'S WEAR <span class="dot">●</span></span>
+    <span>RETAIL &amp; WHOLESALE <span class="dot">●</span></span>
+  </div>
+</div>
+
+<section id="shop">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">What we stock</span>
+        <h2 class="section-title">One rack, every wardrobe.</h2>
+      </div>
+      <p class="section-desc">From everyday basics to statement pieces — CHUK STORES keeps the rail full for whoever walks in.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <span class="cat-num">01</span>
+        <div>
+          <div class="cat-name">Women's Wear</div>
+          <div class="cat-sub">Dresses, tops, sets &amp; more</div>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">02</span>
+        <div>
+          <div class="cat-name">Men's Wear</div>
+          <div class="cat-sub">Shirts, trousers &amp; casuals</div>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">03</span>
+        <div>
+          <div class="cat-name">Plus Sizes</div>
+          <div class="cat-sub">Full range, no exceptions</div>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">04</span>
+        <div>
+          <div class="cat-name">Wholesale</div>
+          <div class="cat-sub">Bulk orders welcome</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fit" class="fit-band">
+  <div class="wrap fit-inner">
+    <div>
+      <div class="size-scale">
+        <div>XS</div><div>S</div><div>M</div><div>L</div><div>XL</div><div>2XL</div><div>3XL</div><div>4XL</div><div>5XL</div>
+      </div>
+      <p class="size-caption">The full size tag — every piece is stocked across the whole range, not just the middle sizes.</p>
+    </div>
+    <div class="fit-copy">
+      <span class="section-tag">Our promise</span>
+      <h2 class="section-title" style="margin-bottom:18px;">Built for every body, not a sample size.</h2>
+      <p><strong>All colours. All sizes. All ages.</strong> That's not a slogan at CHUK STORES — it's how the shop is stocked. Teens, mums, grandmothers, big brothers — everyone finds something that fits.</p>
+      <p>Shopping in person? Come through to Ntinda Shopping Centre. Shopping from your phone? Our Instagram reels show new stock daily, and WhatsApp is open for orders and questions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="social-section" id="follow">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">100K+ followers, 1M+ likes</span>
+        <h2 class="section-title">Thank you for showing up for us.</h2>
+      </div>
+      <p class="section-desc">Every repost, comment and share got CHUK STORES here. Come see what's new — and follow along for daily drops.</p>
+    </div>
+    <div class="social-grid">
+      <a class="social-card ig" href="https://www.instagram.com/chukstore/" target="_blank" rel="noopener">
+        <div class="social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+            <circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+            <circle cx="17.9" cy="6.1" r="1.15" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@chukstore</div>
+        <div class="social-follow">Follow us</div>
+      </a>
+      <a class="social-card fb" href="https://m.facebook.com/chuckstores/about/" target="_blank" rel="noopener">
+        <div class="social-icon" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path d="M14.2 22v-8.4h2.8l.4-3.2h-3.2V4.1c0-.9.3-1.6 1.6-1.6h1.7V.1c-.3-.1-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8.1v3.2h2.8V22h3.3z"></path>
+          </svg>
+        </div>
+        <div class="social-name">Facebook</div>
+        <div class="social-handle">Chuk Stores</div>
+        <div class="social-follow">Follow us</div>
+      </a>
+      <a class="social-card tt" href="https://www.tiktok.com/@chucks.co" target="_blank" rel="noopener">
+        <div class="social-icon" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path d="M15.6 3h2.2c.2 1.7 1.2 2.9 3 3v2.2c-1 0-2-.2-2.9-.7v7.7a4.9 4.9 0 1 1-4.8-4.9c.3 0 .6 0 .9.1V13a2.6 2.6 0 1 0 1.8 2.5V3z"></path>
+          </svg>
+        </div>
+        <div class="social-name">TikTok</div>
+        <div class="social-handle">@chucks.co</div>
+        <div class="social-follow">Follow us</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="location">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">Visit the shop</span>
+        <h2 class="section-title">Find us in Ntinda.</h2>
+      </div>
+      <p class="section-desc">Right in the middle of the action at Ntinda Shopping Centre — easy to reach, easy to park near.</p>
+    </div>
+    <div class="location-inner">
+      <div class="location-info">
+        <div class="loc-line">
+          <span class="loc-icon">📍</span>
+          <span>Ntinda Shopping Centre, next to Total Ntinda — Level 1, Shop B41, Kampala, Uganda</span>
+        </div>
+        <div class="loc-line">
+          <span class="loc-icon">🕐</span>
+          <span>Open daily — message us on WhatsApp to confirm today's hours</span>
+        </div>
+        <div class="loc-line">
+          <span class="loc-icon">📞</span>
+          <span>+256 784 900 500 &nbsp;·&nbsp; +256 772 180 780</span>
+        </div>
+        <a class="btn btn-primary" style="background:var(--plum); color:#fff; margin-top:10px;" href="https://www.google.com/maps/search/?api=1&query=Ntinda+Shopping+Centre+Kampala+Uganda" target="_blank" rel="noopener">Open in Google Maps →</a>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Ntinda+Shopping+Centre,+Kampala,+Uganda&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap contact-inner">
+    <div>
+      <span class="section-tag" style="color:var(--plum-deep);">Let's talk</span>
+      <h2 class="contact-title">Order,<br>ask, or just<br>say hi.</h2>
+    </div>
+    <div class="wa-list">
+      <a class="wa-btn" href="https://wa.me/256784900500" target="_blank" rel="noopener">
+        <span>+256 784 900 500 <small>WhatsApp — orders &amp; enquiries</small></span>
+        <span>→</span>
+      </a>
+      <a class="wa-btn" href="https://wa.me/256772180780" target="_blank" rel="noopener">
+        <span>+256 772 180 780 <small>WhatsApp — orders &amp; enquiries</small></span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="logo">CHUK STORES</div>
+    <div>Ntinda Shopping Centre, Kampala, Uganda</div>
+    <div>© 2026 CHUK STORES. All colours, all sizes, all ages.</div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
